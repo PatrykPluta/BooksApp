@@ -1,30 +1,43 @@
 {
+  'use strict';
 
-//const { render } = require("sass");
+  const select = {
+    templateOf: {
+      templateBook: '# template-book', 
+    },
 
+    containerOf: {
+      containerBook: '#book-list',
+    },
 
-    'use strict';
-
-    const select = {
-        books: '# books-panel > .books-list',
+    all: {
+      menuBooks: '# book-list > .book',
     }
 
-    class Product{
-        constructor(id, data){
-          const thisProduct = this;
-          thisProduct.id = id;
-          thisProduct.data = data;
-          thisProduct.render();
-        }
 
-    render(){
-        const thisProduct = this;
-        for(let id of dataSource.books) {
-            const generatedHTML = template-book(thisProduct.data);
-            thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-            const menuContainer = document.querySelector(select.books);
-            menuContainer.appendChild(thisProduct.element);
-        }
+
+};
+
+  const template = {
+      menuBook: Handlebers.complie(document.querySelector(select.templateOf.templateBook).innerHTML),
+  }
+  class Book {
+    constructor(id, data){
+    const thisBook = this;
+    thisBook.id = id;
+    thisBook.data = data;
+    thisBook.render();
+  }
+
+  render(){
+    const thisBook = this;
+
+    for(let id of dataSource.books) {
+      const generatedHTML = template.menuBook(thisBook.data);
+      thisBook.element = utils.createDOMFromHTML(generatedHTML);
+      const menuContainer = document.querySelector(select.all.menuBooks);
+      menuContainer.appendChild(thisBook.element);
     }
+  }
 }
 }
