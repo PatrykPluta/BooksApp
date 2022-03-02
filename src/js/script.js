@@ -3,7 +3,7 @@
 
   const select = {
     templateOf: {
-      templateBook: '# template-book', 
+      templateBook: '#template-book', 
     },
 
     containerOf: {
@@ -11,33 +11,34 @@
     },
 
     all: {
-      menuBooks: '# book-list > .book',
+      menuBooks: '#book-list > .book',
     }
 
-
-
-};
+  };
 
   const template = {
-      menuBook: Handlebers.complie(document.querySelector(select.templateOf.templateBook).innerHTML),
-  }
+    menuBook: Handlebars.complie(document.querySelector(select.templateOf.templateBook).innerHTML),
+  };
+  
   class Book {
     constructor(id, data){
-    const thisBook = this;
-    thisBook.id = id;
-    thisBook.data = data;
-    thisBook.render();
-  }
+      const thisBook = this;
+      thisBook.id = id;
+      thisBook.data = data;
+      thisBook.render();
+    }
+  
 
-  render(){
-    const thisBook = this;
+    render() {
+      const thisBook = this;
 
-    for(let id of dataSource.books) {
-      const generatedHTML = template.menuBook(thisBook.data);
-      thisBook.element = utils.createDOMFromHTML(generatedHTML);
-      const menuContainer = document.querySelector(select.all.menuBooks);
-      menuContainer.appendChild(thisBook.element);
+      for(let id of dataSource.books) {
+        const generatedHTML = template.menuBook(thisBook.data);
+        thisBook.element = utils.createDOMFromHTML(generatedHTML);
+        const menuContainer = document.querySelector(select.all.menuBooks);
+        menuContainer.appendChild(thisBook.element);
+      }
     }
   }
 }
-}
+  
