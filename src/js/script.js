@@ -40,7 +40,7 @@
 
       thisBooksList.dom = {};
       thisBooksList.dom.wrapper = document.querySelector(select.containerOf.containerBooks);
-    
+      thisBooksList.favoriteBooks = [];
       
     }
 
@@ -57,16 +57,19 @@
     initActions() {
       const thisBooksList = this;
 
-      thisBooksList.favoriteBooks = {};
-      thisBooksList.clickBooks = document.querySelector(select.bookFavorite.menuImage);
-
+      
+      thisBooksList.clickBooks = document.querySelectorAll(select.bookFavorite.menuImage);
+       
+       
       for(let likeBooks of thisBooksList.clickBooks) {
 
-        likeBooks.addEventListener('dbclick', function(event){
+        thisBooksList.clickBooks.addEventListener('dblclick', function(event){
           event.preventDefault();
           thisBooksList.clickBooks.classList.add('favorite');
+          thisBooksList.clickBooks.push(new thisBooksList.favoriteBooks());
         });
       }
+      
     }
   }
 
