@@ -15,7 +15,7 @@
     },
 
     bookFavorite: {
-      menuImage: '.books-list > .book__image',
+      menuImage: '.books-list .book__image',
     },
 
   };
@@ -61,12 +61,12 @@
       thisBooksList.clickBooks = document.querySelectorAll(select.bookFavorite.menuImage);
        
        
-      for(let likeBooks of thisBooksList.clickBooks) {
+      for(let likeBook of thisBooksList.clickBooks) {
 
-        thisBooksList.clickBooks.addEventListener('dblclick', function(event){
+        likeBook.addEventListener('dblclick', function(event){
           event.preventDefault();
-          thisBooksList.clickBooks.classList.add('favorite');
-          thisBooksList.clickBooks.push(new thisBooksList.favoriteBooks());
+          likeBook.classList.add('favorite');
+          
         });
       }
       
