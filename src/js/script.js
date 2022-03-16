@@ -84,13 +84,20 @@
 
       thisBooksList.clickFilters = document.querySelector(select.bookFilters.menuFilters);
 
-      //for(let filters of thisBooksList.clickFilters) {
-        thisBooksList.clickFilters.addEventListener('click', function(event){
-          if(event.target.offsetParent.classList.contains('.filter'));
-          thisBooksList.clickFilters.getAttribute('value');
-          console.log('clickfilters', thisBooksList.clickFilters)
-        });
-      //}
+      thisBooksList.clickFilters.addEventListener('click', function(event){
+        if(event.target.tagName === 'INPUT' && event.target.type === 'checkbox' && event.target.name === 'filter');
+        const bookValue = thisBooksList.clickFilters.getAttribute('value');
+        if(!thisBooksList.clickFilters.includes(bookValue)) {
+          thisBooksList.clickFilters.push(bookValue);
+        } else {
+          const indexValue = thisBooksList.favoriteBooks.indexOf(bookValue);
+          thisBooksList.clickFilters.splice(indexValue, 1);
+        }
+        
+        
+        console.log('clickfilters', thisBooksList.clickFilters);
+      });
+      
     }
   }
 
