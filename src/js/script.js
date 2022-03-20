@@ -22,6 +22,10 @@
       menuFilters: '.container .filters'
     },
 
+    bookRaiting: {
+      menuRaiting: '.book__rating'
+    }
+
   };
 
   const template = {
@@ -45,7 +49,8 @@
       thisBooksList.dom = {};
       thisBooksList.dom.wrapper = document.querySelector(select.containerOf.containerBooks);
       thisBooksList.dom.filters = document.querySelector(select.bookFilters.menuFilters);
-      
+      thisBooksList.dom.rating = document.querySelector(select.bookRaiting.menuRaiting);
+
       thisBooksList.favoriteBooks = [];
       thisBooksList.filters = [];
       
@@ -55,6 +60,8 @@
       const thisBooksList = this;
 
       for(let book of thisBooksList.data) {
+        //book.ratingWidth = cos;
+        //book.ratingBgc = determineRatingBgc(rating);
         const generatedHTML = template.menuBook(book);
         const elem = utils.createDOMFromHTML(generatedHTML); 
         thisBooksList.dom.wrapper.appendChild(elem);
@@ -68,7 +75,7 @@
         event.preventDefault();
         
         const elem = event.target.offsetParent;
-        if(elem.classList.contains('.book__image')) {
+        if(elem.classList.contains('book__image')) {
           const bookId = elem.getAttribute('data-id');
           elem.classList.toggle('favorite');
           if(!thisBooksList.favoriteBooks.includes(bookId)) {
@@ -118,10 +125,21 @@
       }
     }
 
-    determineRatingBgc() {
+    determineRatingBgc(rating) {
       const thisBooksList = this;
 
-      
+      /*if(thisBooksList.dom.rating < 6) {
+        return {background: linear-gradient(to bottom,  #fefcea 0% , #f1da36 100%)};
+      }
+      if(thisBooksList.dom.rating > 6 && <= 8) {
+        return {background: linear-gradient(to bottom, #b4df5b 0% , #b4df5b 100%)};
+      }
+      if(thisBooksList.dom.rating > 8 && <= 9) {
+        return {background: linear-gradient(to bottom, #299a0b 0% , #299a0b 100%)};
+      }
+      if(thisBooksList.dom.rating > 9) {
+        return {background: linear-gradient(to bottom, #ff0084 0% , #ff0084 100%)};
+      }*/
     }
 
   }
