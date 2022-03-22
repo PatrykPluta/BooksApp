@@ -62,8 +62,8 @@
       const thisBooksList = this;
 
       for(let book of thisBooksList.data) {
-        //book.ratingWidth = cos;
-        const ratingBgc = determineRatingBgc();
+        book.ratingWidth = book.rating * 10;
+        book.ratingBgc = determineRatingBgc(book.rating);
         const generatedHTML = template.menuBook(book);
         const elem = utils.createDOMFromHTML(generatedHTML); 
         thisBooksList.dom.wrapper.appendChild(elem);
@@ -127,7 +127,7 @@
       }
     }
 
-    determineRatingBgc(rating) {
+    determineRatingBgc() {
       const thisBooksList = this;
 
       if(thisBooksList.dom.rating < 6) {
